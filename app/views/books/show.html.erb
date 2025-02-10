@@ -1,0 +1,51 @@
+<h1 class="book-title"><%= @book.title %></h1>
+
+<div class="book-container">
+  <p><strong>Author:</strong> <%= @book.author %></p>
+  <p><strong>ISBN:</strong> <%= @book.isbn %></p>
+
+  <% if @book.borrowings.where(returned_at: nil).none? %>
+    <%= button_to "Borrow", borrowings_path(book_id: @book.id), method: :post, class: "borrow-btn" %>
+  <% else %>
+    <p class="borrowed-text">This book is currently borrowed.</p>
+  <% end %>
+</div>
+
+<style>
+  .book-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  .book-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .borrow-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .borrow-btn:hover {
+    background: #0056b3;
+  }
+
+  .borrowed-text {
+    color: red;
+    font-weight: bold;
+  }
+</style>
