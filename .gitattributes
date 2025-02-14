@@ -7,3 +7,8 @@ db/schema.rb linguist-generated
 vendor/* linguist-vendored
 config/credentials/*.yml.enc diff=rails_credentials
 config/credentials.yml.enc diff=rails_credentials
+
+# Prioritize Ruby over HTML and CSS
+*.rb linguist-detectable=true
+*.html linguist-detectable=false
+*.css linguist-detectable=false
